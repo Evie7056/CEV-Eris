@@ -49,6 +49,9 @@ semi accepts weird caliber - +1 points
 	spawn_frequency = 0
 
 /obj/item/part/gun/artwork/Initialize()
+	. = ..()
+	var/part_type = pick("mechanism","barrel","grip") //So artistic parts randomly chose what the will be
+
 	name = get_weapon_name(capitalize = TRUE)
 	AddComponent(/datum/component/atom_sanity, 0.2 + pick(0,0.1,0.2), "")
 	price_tag += rand(0, 500)
