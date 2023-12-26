@@ -217,8 +217,22 @@
 		var/obj/structure/artwork_statue/S = new(src)
 		return S
 	else if(full_artwork == "artwork_gunPart")
-		var/obj/item/part/gun/artwork/P = new(src)
-		return P
+		var/obj/item/part/gun/artwork/part_type = pickweight(list(
+		"mechanism",
+		"barrel",
+		"grip"
+	), 1) //So artistic parts randomly chose what the will be
+	switch(part_type)
+		if("mechanism")
+			/obj/item/part/gun/modular/mechanism/artistic/M = new(src)
+			return M
+		if("barrel")
+			var/obj/item/part/gun/modular/barrel/artistic/B = new(src)
+			return B
+		if("grip")
+			var/obj/item/part/gun/modular/grip/artistic/G = new(src)
+			return G
+
 	else if(full_artwork == "artwork_armorPart")
 		var/obj/item/part/armor/artwork/P = new(src)
 		return P
