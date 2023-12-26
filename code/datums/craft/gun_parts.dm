@@ -49,68 +49,18 @@ semi accepts weird caliber - +1 points
 	spawn_frequency = 0
 
 /obj/item/part/gun/artwork/Initialize()
-	var/part_type = pickweight(list(
-		"mechanism",
-		"barrel",
-		"grip"
+	. = ..()
+	var/part_type = pick("mechanism","barrel","grip") //So artistic parts randomly chose what the will be
 
-	), 1) //So artistic parts randomly chose what the will be
-	switch(part_type)
-		if("mechanism")
-			var/obj/item/part/gun/modular/mechanism/artistic/M = new(src)
-		if("barrel")
-			var/obj/item/part/gun/modular/barrel/artistic/B = new(src)
-		if("grip")
-			var/obj/item/part/gun/modular/grip/artistic/G = new(src)
-	qdel(src)
-
-/obj/item/part/gun/proc/slap_down_artistic_qualities() //please don't judge me. Artistic gunparts derived from modular parts not the old type so I'm doing this dirty trick
 	name = get_weapon_name(capitalize = TRUE)
 	AddComponent(/datum/component/atom_sanity, 0.2 + pick(0,0.1,0.2), "")
 	price_tag += rand(0, 500)
+	return ..()
 
-/obj/item/part/gun/modular/mechanism/artistic
-/obj/item/part/gun/modular/barrel/artistic
-/obj/item/part/gun/modular/grip/artistic
-
-
-/obj/item/part/gun/modular/mechanism/artistic/get_item_cost(export) // this is kinda stupid but I didn't come out with anything better
+/obj/item/part/gun/artwork/get_item_cost(export)
 	. = ..()
 	GET_COMPONENT(comp_sanity, /datum/component/atom_sanity)
 	. += comp_sanity.affect * 100
-
-/obj/item/part/gun/modular/barrel/artistic/get_item_cost(export)
-	. = ..()
-	GET_COMPONENT(comp_sanity, /datum/component/atom_sanity)
-	. += comp_sanity.affect * 100
-
-/obj/item/part/gun/modular/grip/artistic/get_item_cost(export)
-	. = ..()
-	GET_COMPONENT(comp_sanity, /datum/component/atom_sanity)
-	. += comp_sanity.affect * 100
-
-
-
-/obj/item/part/gun/modular/mechanism/artistic/Initialize()
-	. = ..()
-
-	slap_down_artistic_qualities()
-
-	..()
-
-/obj/item/part/gun/modular/barrel/artistic/Initialize()
-	. = ..()
-
-	slap_down_artistic_qualities()
-
-	..()
-
-/obj/item/part/gun/modular/grip/artistic/Initialize()
-	. = ..()
-
-	slap_down_artistic_qualities()
-
-	..()
 
 /obj/item/part/gun/modular // The type of part that supports displaying overlays when added to modular guns
 	name = "modular gun part"
