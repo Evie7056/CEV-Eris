@@ -224,7 +224,7 @@
 	), 1) //So artistic parts randomly chose what the will be
 	switch(part_type)
 		if("mechanism")
-			/obj/item/part/gun/modular/mechanism/artistic/M = new(src)
+			var/obj/item/part/gun/modular/mechanism/artistic/M = new(src)
 			return M
 		if("barrel")
 			var/obj/item/part/gun/modular/barrel/artistic/B = new(src)

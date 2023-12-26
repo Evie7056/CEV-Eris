@@ -723,3 +723,16 @@ semi accepts weird caliber - +1 points
 	..() // No stat change, so no need for price change either
 	I.weapon_upgrades[GUN_UPGRADE_DEFINE_STOCK] = TRUE
 	I.gun_loc_tag = PART_STOCK
+
+// artistic parts
+
+/obj/item/part/gun/modular/mechanism/artistic
+
+/obj/item/part/gun/modular/barrel/artistic
+
+/obj/item/part/gun/modular/grip/artistic
+
+/obj/item/part/gun/modular/grip/artistic/New()
+	set_quality(var/quality = 2) //the only random thing in them is their sprite type, so-o...
+
+/obj/item/part/gun/modular/grip/artistic/set_quality(var/quality = 0)
