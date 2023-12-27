@@ -222,16 +222,16 @@
 		"barrel",
 		"grip"
 	), 1) //So artistic parts randomly chose what the will be
-	switch(part_type)
-		if("mechanism")
-			var/obj/item/part/gun/modular/mechanism/artistic/M = new(src)
-			return M
-		if("barrel")
-			var/obj/item/part/gun/modular/barrel/artistic/B = new(src)
-			return B
-		if("grip")
-			var/obj/item/part/gun/modular/grip/artistic/G = new(src)
-			return G
+		switch(part_type)
+			if("mechanism")
+				var/obj/item/part/gun/modular/mechanism/artistic/M = new(src)
+				return M
+			if("barrel")
+				var/obj/item/part/gun/modular/barrel/artistic/B = new(src)
+				return B
+			if("grip")
+				var/obj/item/part/gun/modular/grip/artistic/G = new(src)
+				return G
 
 	else if(full_artwork == "artwork_armorPart")
 		var/obj/item/part/armor/artwork/P = new(src)
